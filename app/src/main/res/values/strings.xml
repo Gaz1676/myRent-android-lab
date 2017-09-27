@@ -2,4 +2,7 @@
     <string name="app_name">MyRent</string>
     <string name="title_activity_myrent">MyRentActivity</string>
     <string name="geolocation_hint">52.253456,-7.187162</string>
+    <string name="registration_date">registration date</string>
+    <string name="location">Location</string>
+    <string name="status">Status</string>
 </resources>
