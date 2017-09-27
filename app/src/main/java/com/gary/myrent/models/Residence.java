@@ -1,18 +1,22 @@
 package com.gary.myrent.models;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Residence
 {
-    private Long id;
+    public Long id;
+    public Long date;
 
     //a latitude longitude pair
     //example "52.4566,-6.5444"
     private String geolocation;
+    public boolean rented;
 
     public Residence()
     {
         id = unsignedLong();
+        date = new Date().getTime();
     }
 
     /**
@@ -36,4 +40,14 @@ public class Residence
     {
         return geolocation;
     }
+
+    public String getDateString() {
+        return "Registered:" + dateString();
+    }
+
+    private String dateString() {
+        String dateFormat = "EEE d MMM yyyy H:mm";
+        return android.text.format.DateFormat.format(dateFormat, date).toString();
+    }
+
 }
