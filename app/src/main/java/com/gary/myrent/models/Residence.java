@@ -1,4 +1,4 @@
-package com.gary.myrent;
+package com.gary.myrent.models;
 
 import java.util.Random;
 
