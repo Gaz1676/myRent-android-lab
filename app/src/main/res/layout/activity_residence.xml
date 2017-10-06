@@ -37,11 +37,11 @@
     <!-- STATUS SEPARATOR-->
     <TextView
         android:id="@+id/statusLabel"
+        style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/status"
-        style="?android:listSeparatorTextViewStyle"/>
+        android:text="@string/status" />
 
     <Button
         android:id="@+id/registration_date"
@@ -67,8 +67,27 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/isrented"
-        android:checked="false"/>
+        android:checked="false"
+        android:text="@string/isrented" />
+
+    <Button
+        android:id="@+id/tenant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_color_edges"
+        android:text="@string/landlord" />
+
+    <Button
+        android:id="@+id/residence_reportButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_color_edges"
+        android:text="@string/residence_report" />
 
 </LinearLayout>
 
