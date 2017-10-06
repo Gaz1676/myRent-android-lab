@@ -25,6 +25,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.ResidenceListActivity"/>
+        </activity>
+
     </application>
 
 </manifest>
