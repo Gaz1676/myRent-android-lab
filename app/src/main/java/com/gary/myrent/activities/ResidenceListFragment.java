@@ -62,7 +62,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Residence res = ((ResidenceAdapter) getListAdapter()).getItem(position);
-        Intent i = new Intent(getActivity(), ResidenceActivity.class);
+        Intent i = new Intent(getActivity(), ResidencePagerActivity.class);
         i.putExtra(ResidenceFragment.EXTRA_RESIDENCE_ID, res.id);
         startActivityForResult(i, 0);
     }
@@ -86,7 +86,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
                 Residence residence = new Residence();
                 portfolio.addResidence(residence);
 
-                Intent i = new Intent(getActivity(), ResidenceActivity.class);
+                Intent i = new Intent(getActivity(), ResidencePagerActivity.class);
                 i.putExtra(ResidenceFragment.EXTRA_RESIDENCE_ID, residence.id);
                 startActivityForResult(i, 0);
                 return true;
@@ -99,7 +99,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Residence residence = adapter.getItem(position);
-        IntentHelper.startActivityWithData(getActivity(), ResidenceActivity.class, "RESIDENCE_ID", residence.id);
+        IntentHelper.startActivityWithData(getActivity(), ResidencePagerActivity.class, "RESIDENCE_ID", residence.id);
     }
 
 
