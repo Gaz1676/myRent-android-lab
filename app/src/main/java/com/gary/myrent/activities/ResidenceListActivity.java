@@ -7,17 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.gary.myrent.R;
 
-public class ResidenceListActivity extends AppCompatActivity
-{
-    public void onCreate(Bundle savedInstanceState)
-    {
+public class ResidenceListActivity extends AppCompatActivity {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_container);
 
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
-        if (fragment == null)
-        {
+        if (fragment == null) {
             fragment = new ResidenceListFragment();
             manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
         }
