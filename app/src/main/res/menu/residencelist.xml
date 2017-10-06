@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background_color"
     tools:context="com.gary.myrent.ResidenceActivity">
 
-    <item android:id="@+id/menu_item_new_residence"
+    <item
+        android:id="@+id/menu_item_new_residence"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/new_residence"
-        app:showAsAction="ifRoom|withText"/>
-
+        app:showAsAction="ifRoom|withText" />
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/menu"
+        android:icon="@drawable/menu_icon"
         android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="@string/settings"/>
+        android:title="@string/menu"
+        app:showAsAction="ifRoom">
+        <menu>
 
+            <item
+                android:id="@+id/action_settings"
+                android:icon="@drawable/settings_icon"
+                android:orderInCategory="100"
+                android:title="@string/settings"
+                app:showAsAction="never" />
+        </menu>
+    </item>
 </menu>
