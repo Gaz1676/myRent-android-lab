@@ -25,6 +25,7 @@ import com.gary.myrent.R;
 import com.gary.myrent.app.MyRentApp;
 import com.gary.myrent.models.Portfolio;
 import com.gary.myrent.models.Residence;
+import com.gary.myrent.settings.SettingsActivity;
 
 import java.util.ArrayList;
 
@@ -90,7 +91,10 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
                 i.putExtra(ResidenceFragment.EXTRA_RESIDENCE_ID, residence.id);
                 startActivityForResult(i, 0);
                 return true;
-
+            // added the following menu-handler code
+            case R.id.action_settings:
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
