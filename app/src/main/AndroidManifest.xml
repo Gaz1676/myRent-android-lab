@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gary.myrent">
-
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <application
         android:name=".app.MyRentApp"
         android:allowBackup="true"
@@ -10,12 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".activities.ResidenceActivity"
-            android:label="@string/app_name" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.ResidenceListActivity"/>
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.ResidenceListActivity" />
         </activity>
         <activity android:name=".activities.ResidenceListActivity">
             <intent-filter>
