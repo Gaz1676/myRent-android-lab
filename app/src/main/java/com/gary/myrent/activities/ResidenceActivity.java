@@ -1,3 +1,37 @@
+// replaced old code with this due to it being
+// moved to its associated new fragment class - ResidenceFragment
+package com.gary.myrent.activities;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+
+import com.gary.myrent.R;
+
+public class ResidenceActivity extends AppCompatActivity
+{
+    ActionBar actionBar;
+
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_container);
+
+        actionBar = getSupportActionBar();
+
+        FragmentManager manager = getSupportFragmentManager();
+        Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
+        if (fragment == null)
+        {
+            fragment = new ResidenceFragment();
+            manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
+        }
+    }
+}
+
+/*
 package com.gary.myrent.activities;
 
 import android.Manifest;
@@ -53,7 +87,7 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_residence);
+        setContentView(R.layout.fragment_residence);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         geolocation = (EditText) findViewById(R.id.geolocation);
@@ -204,4 +238,4 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
             }
         }
     }
-}
+}*/
