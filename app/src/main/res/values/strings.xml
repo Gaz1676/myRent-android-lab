@@ -7,5 +7,14 @@
     <string name="status">Status</string>
     <string name="isrented">Rented?</string>
     <string name="new_residence">New Residence</string>
+    <string name="landlord">Prospective Tenant</string>
+    <string name="residence_report">Send Residence Information</string>
+
+    <string name="residence_report_rented">The residence is already let.</string>
+    <string name="residence_report_not_rented">The residence is still available.</string>
+    <string name="residence_report_nobody_interested">There is no other prospective tenant at this time.</string>
+    <string name="residence_report_prospective_tenant">The prospective tenant is %s.</string>
+    <string name="residence_report_subject">Status Report on Residence Availability</string>
+    <string name="send_report">Send residence report via</string>
     <string name="settings">Settings</string>
 </resources>
