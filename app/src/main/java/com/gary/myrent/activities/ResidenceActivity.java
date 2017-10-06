@@ -1,8 +1,12 @@
 package com.gary.myrent.activities;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,6 +47,7 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
     private Button reportButton;
     private String emailAddress = "";
     private static final int REQUEST_CONTACT = 1; // prospective tenant ID we will use for the implicit Intent
+    private Intent data; // This field is initialized in `onActivityResult`
 
 
     @Override
@@ -151,11 +156,52 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CONTACT:
-                String name = getContact(this, data);
-                emailAddress = getEmail(this, data);
-                tenantButton.setText(name + " : " + emailAddress);
-                residence.tenant = name;
+                this.data = data;
+                checkContactsReadPermission();
                 break;
+        }
+    }
+
+    // adding permission checks prior reading the contact details
+    // we will farm the reading of the contact details into this new private method
+
+    private void readContact() {
+        String name = getContact(this, data);
+        emailAddress = getEmail(this, data);
+        tenantButton.setText(name + " : " + emailAddress);
+        residence.tenant = name;
+    }
+
+    //https://developer.android.com/training/permissions/requesting.html
+    private void checkContactsReadPermission() {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            //We can request the permission.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CONTACT);
+        } else {
+            //We already have permission, so go head and read the contact
+            readContact();
+        }
+    }
+
+    // When user responds to dialog box (allow/deny)
+    // the system invokes the app's onRequestPermissionsResult() method passing in users response
+    // Note if permission is granted, the readContact method is called, otherwise it is ignored
+    // https://developer.android.com/training/permissions/requesting.html
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CONTACT: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted
+                    readContact();
+                }
+            }
         }
     }
 }
