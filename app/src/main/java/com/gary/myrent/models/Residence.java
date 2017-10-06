@@ -13,9 +13,6 @@ import java.util.Random;
 public class Residence {
     public Long id;
     public Long date;
-
-    //a latitude longitude pair
-    //example "52.4566,-6.5444"
     public String geolocation;
     public boolean rented;
     public String tenant;
@@ -28,7 +25,7 @@ public class Residence {
     private static final String JSON_TENANT = "tenant";
 
     public Residence() {
-        id = unsignedLong();
+        id = unsignedLong(); // protected Residence against a negative id
         date = new Date().getTime();
         geolocation = "52.253456,-7.187162";
         tenant = ":none presently"; // string literal to avoid a future null pointer exception error
@@ -78,7 +75,6 @@ public class Residence {
 
     /**
      * Generate a long greater than zero
-     *
      * @return Unsigned Long value greater than zero
      */
     private Long unsignedLong() {
